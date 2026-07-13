@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 POINT TRADERS </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /*
+         * Theme: Tamil Royal Crimson & Golden Cyber
+         * Design Goal: Bridge traditional Tamil aesthetics (Deep Maroon/Gold)
+         * with modern educational tech.
+         */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            overflow-x: hidden;
+            background-color: #120207; /* Deep Tamil Crimson/Maroon Shadow */
+        }
+
+        /* 
+         * SVG Background Pattern
+         * Adds a subtle Tamil traditional Kolam/Mandala motif. 
+         */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><g fill="%23ffd700" fill-opacity="0.04"><path d="M100 0 L130 70 L200 100 L130 130 L100 200 L70 130 L0 100 L70 70 Z M100 30 L120 80 L170 100 L120 120 L100 170 L80 120 L30 100 L80 80 Z"/><circle cx="100" cy="100" r="15"/></g></svg>');
+            background-size: 160px 160px;
+            background-repeat: repeat;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 460px;
+            text-align: center;
+        }
+
+        /*
+         * Royal Gold Cyber Card
+         */
+        .card {
+            position: relative;
+            overflow: hidden;
+            padding: 40px 30px;
+            border-radius: 20px;
+            background: rgba(22, 4, 10, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            
+            /* Pure Tamil Festive Gold Border */
+            border: 2px solid #ffd700;
+            
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(255, 215, 0, 0.15);
+            
+            transition: transform 0.3s ease;
+        }
+
+        /* 
+         * Golden Glow Effect
+         */
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: #ffd700;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            top: -100px;
+            left: -100px;
+            z-index: 1;
+        }
+
+        /*
+         * Main Content Structure
+         */
+        .main-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffd700;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .verify {
+            color: #ffd700;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .verify i {
+            color: #4ade80; /* Cyber Green */
+        }
+
+        h2 {
+            font-size: 25px;
+            color: #ffffff;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            margin-bottom: 20px;
+        }
+
+        /*
+         * Stats Grid
+         */
+        .stats {
+            background: rgba(255, 215, 0, 0.06);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 18px;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .stats-item {
+            color: #e2e8f0;
+            font-size: 12.5px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .stats-item i {
+            font-size: 20px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .stats-item .english {
+            display: block;
+            font-weight: 700;
+            color: #ffe44d;
+        }
+
+        .stats-item .tamil {
+            color: #fff;
+            opacity: 0.9;
+            font-size: 11px;
+        }
+
+        .description {
+            margin-top: 15px;
+            margin-bottom: 22px;
+            line-height: 1.7;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+
+        /*
+         * Modern Gold Gradient Button
+         */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #120207; /* Dark text for contrast on gold button */
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            
+            /* Bright Gold Gradient */
+            background: linear-gradient(135deg, #ffd700, #bfa100);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.35);
+            
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.7s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /*
+         * Structured Benefits List
+         */
+        .benefits {
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .benefits div {
+            padding: 11px 0;
+            color: #e2e8f0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .benefits div:last-child {
+            border-bottom: none;
+        }
+
+        .benefits .tamil-text {
+            color: #fff;
+        }
+
+        .benefits .english-text {
+            color: #ffe44d;
+            font-weight: 700;
+        }
+
+        /*
+         * Timer
+         */
+        .timer {
+            margin-top: 22px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .timer span {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /*
+         * Final Disclaimer
+         */
+        .disclaimer {
+            margin-top: 25px;
+            font-size: 11px;
+            line-height: 1.8;
+            color: #94a3b8;
+            padding: 0 10px;
+        }
+
+        @media(max-width: 480px) {
+            .card { padding: 30px 20px; }
+            h2 { font-size: 21px; }
+            .profile { width: 100px; height: 100px; }
+            .btn { font-size: 14px; padding: 16px; }
+            .stats { padding: 12px; }
+            .stats-item { font-size: 11px; }
+            .stats-item .tamil { font-size: 10px; }
+        }
+
+    </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1037921622516039');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1037921622516039&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="card">
+        <div class="main-content">
+            <!-- Profile Image -->
+            <img src="https://growthsteps.pages.dev/3P.jpg" class="profile" alt="Kashis Profile">
+
+            <div class="verify">
+                <i class="fas fa-check-circle"></i> தமிழ் கற்றல் கம்யூனிட்டி
+            </div>
+
+            <h2>📚 3 POINT TRADERS 📚</h2>
+
+            <!-- Stats Grid with Tamil & English Mix -->
+            <div class="stats">
+                <div class="stats-item">
+                    <i class="fas fa-star" style="color:#ffd700"></i>
+                    <span class="english">Beginner Friendly</span>
+                    <span class="tamil">எளிதான கற்றல்</span>
+                </div>
+                <div class="stats-item">
+                    <i class="fas fa-users" style="color:#38bdf8"></i>
+                    <span class="english">Active Tamil</span>
+                    <span class="tamil">குழுமம்</span>
+                </div>
+                <div class="stats-item">
+                    <i class="fas fa-fire" style="color:#f87171"></i>
+                    <span class="english">Daily Market</span>
+                    <span class="tamil">அப்டேட்டுகள்</span>
+                </div>
+            </div>
+
+            <p class="description">
+                📚 Stock Market & Financial <span style="color:#ffe44d; font-weight:600;">விழிப்புணர்வு கம்யூனிட்டி</span>.
+            </p>
+
+            <a class="btn" id="telegramBtn" href="https://t.me/+885JyGIInvNhNTM1" rel="noopener noreferrer">
+                <i class="fab fa-telegram font-awesome-icon" style="font-size: 18px;"></i>
+                JOINF FREE LEARNING COMMUNITY
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <!-- Structured Benefits List -->
+            <div class="benefits">
+                <div><i class="fas fa-chart-line" style="color: #4ade80;"></i> <span class="tamil-text">Daily</span> <span class="english-text">மார்க்கெட் அனாலிசிஸ்</span></div>
+                <div><i class="fas fa-book-open" style="color: #ffd700;"></i> <span class="tamil-text">Free</span> <span class="english-text">கற்றல் பொருட்கள் (Learning Materials)</span></div>
+                <div><i class="fas fa-bullseye" style="color: #f87171;"></i> <span class="tamil-text">தமிழில் எளிமையான பங்குச்சந்தை விளக்கம்</span></div>
+                <div><i class="fas fa-users" style="color: #38bdf8;"></i> <span class="tamil-text">Full தமிழ் கம்யூனிட்டி சப்போர்ட்</span></div>
+                <div><i class="fas fa-lightbulb" style="color: #facc15;"></i> <span class="tamil-text">முறையான சந்தை விழிப்புணர்வு & அறிவு</span></div>
+            </div>
+
+            <div class="timer">
+                ⏳ <span id="count">30</span> வினாடிகளில் தானாக ரீடைரக்ட் செய்யப்படும்...
+            </div>
+        </div>
+    </div>
+
+    <!-- Tamil Disclaimer -->
+    <div class="disclaimer">
+        <strong>பொறுப்புத் துறப்பு (Disclaimer):</strong> இந்த தளம் கல்வி மற்றும் தகவல் நோக்கங்களுக்காக மட்டுமே உருவாக்கப்பட்டுள்ளது. நாங்கள் எந்தவொரு முதலீடு, வர்த்தகம் (Trading) அல்லது நிதி ஆலோசனைகளையும் (Financial Advice) வழங்குவதில்லை. எந்தவொரு முடிவையும் எடுப்பதற்கு முன், உங்கள் சொந்த ஆராய்ச்சியை மேற்கொள்ளுங்கள் அல்லது உங்கள் நிதி ஆலோசகரை அணுகவும்.
+    </div>
+</div>
+
+<script>
+    // Countdown Timer and Event Tracking Logic
+    let time = 30;
+    let counter = document.getElementById("count");
+
+    // Telegram link
+    const TELEGRAM_URL = "https://t.me/+885JyGIInvNhNTM1"; 
+
+    // Handle button click with tracking
+    document.getElementById("telegramBtn").addEventListener("click", function(e){
+        e.preventDefault();
+        const telegramLink = this.href;
+
+        // Meta Pixel tracking: Subscribe event
+        if (typeof fbq !== 'undefined') {
+            fbq('track','Lead',{
+                content_name:'Telegram Community',
+                button_click:true
+            },{
+                eventID:'telegram_subscribe_'+Date.now()
+            });
+        } else {
+            console.warn("fbq is not defined. Tracking skipped.");
+        }
+
+        // Delay redirect slightly for tracking to fire
+        setTimeout(()=>{
+            window.location.href = telegramLink;
+        }, 1000);
+    });
+
+    // Automatic countdown and redirect
+    const countdown = setInterval(()=>{
+        time--;
+        if (counter) {
+            counter.innerText = time;
+        }
+
+        if (time <= 0) {
+            clearInterval(countdown);
+            window.location.href = TELEGRAM_URL;
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
